@@ -105,7 +105,7 @@ class Attachments extends BaseController {
     foreach ($autoActions as $action) {
       switch ($action->trigger) {
         case ActionTrigger::FILE_UPLOADED():
-          $output = $this->n8napi->httpPost($task, $boardId, $attachment->id));
+          $output = $this->n8napi->httpPost($task, $boardId, $attachment->id);
           $this->apiJson->addAlert('fileupload webhook result:',$output);
           break;
       }
