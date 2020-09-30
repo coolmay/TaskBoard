@@ -1,0 +1,1 @@
+docker build %~dp0..\TaskBoard -t taskboard:private

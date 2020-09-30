@@ -127,7 +127,8 @@
   "cli": {
     "warnings": {
       "typescriptMismatch": false
-    }
+    },
+    "analytics": "2e71c661-4a0a-4536-b60d-91a30f003889"
   },
   "schematics": {
     "@schematics/angular:component": {

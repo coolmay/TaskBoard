@@ -50,3 +50,5 @@ Thumbs.db
 *.sqlite
 *.zip
 
+/.vs/TaskBoard
+/.vs

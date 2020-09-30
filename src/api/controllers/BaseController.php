@@ -8,11 +8,13 @@ abstract class BaseController {
   protected $dbLogger;
   protected $strings;
   protected $mailer;
+  protected $n8napi;
 
   public function __construct(ContainerInterface $container) {
     $this->apiJson = new ApiJson();
     $this->logger = $container->get('logger');
     $this->dbLogger = new DbLogger();
+    $this->n8napi = new N8NApi();
 
     // Default to English
     $this->loadStrings('en');
@@ -67,8 +69,8 @@ abstract class BaseController {
       return 403;
     }
 
-    $payload = Auth::getJwtPayload($request->getHeader('Authorization')[0]);
-    $user->active_token = Auth::createJwt($user->id, $payload->mul);
+    //$payload = Auth::getJwtPayload($request->getHeader('Authorization')[0]);
+    //$user->active_token = Auth::createJwt($user->id, $payload->mul);
 
     R::store($user);
 

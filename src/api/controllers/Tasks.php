@@ -67,6 +67,8 @@ class Tasks extends BaseController {
       '(' .  $task->title . ').');
     $this->apiJson->addData(R::exportAll($task));
 
+
+
     $board = R::load('board', $column->board_id);
     $this->apiJson->addData(R::exportAll($board));
 
@@ -222,6 +224,12 @@ class Tasks extends BaseController {
 
     foreach ($autoActions as $action) {
       switch ($action->trigger) {
+      case ActionTrigger::TASK_CREATED():
+        if ($before === null)
+        {
+           $this->alterTask($action, $after['id']); 
+        }
+        break;
       case ActionTrigger::MOVED_TO_COLUMN():
         if ($before[0]['column_id'] !== $after[0]['column_id'] &&
           $after[0]['column_id'] === (int)$action->source_id) {
@@ -296,7 +304,11 @@ class Tasks extends BaseController {
       $this->apiJson->addAlert('info', $this->strings->api_taskAutoColor);
       R::store($task);
       break;
-
+    case ActionType::CALL_N8N_WebHook():
+      $task = R::load('task', $taskId);
+      $output = $this->n8napi->httpPost($task, $boardId = $this->getBoardId($task['column_id']), 0);
+      $this->apiJson->addAlert('webhook result:',$output);
+      break;
     case ActionType::SET_CATEGORY():
       $task = R::load('task', $taskId);
       unset($task->sharedCategoryList);

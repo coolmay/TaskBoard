@@ -2,7 +2,9 @@ export enum ActionTrigger {
   MovedToColumn = 1,
   AssignedToUser,
   AddedToCategory,
-  PointsChanged
+  PointsChanged,
+  TaskCreated,
+  FileUploaded
 }
 
 export enum ActionType {
@@ -12,7 +14,8 @@ export enum ActionType {
   SetAssignee,
   AddAssignee,
   ClearDueDate,
-  AlterColorByPoints
+  AlterColorByPoints,
+  StartFlow
 }
 
 export class AutoAction {

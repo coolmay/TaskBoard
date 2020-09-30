@@ -20,8 +20,8 @@ class Attachments extends BaseController {
       return $this->jsonResponse($response);
     }
 
-    if (!$this->checkBoardAccess($this->getBoardId($attachment->task_id),
-      $request)) {
+    $boardId = $this->getBoardId($attachment->task_id);
+    if (!$this->checkBoardAccess($boardId, $request)) {
       return $this->jsonResponse($response, 403);
     }
 
@@ -86,7 +86,8 @@ class Attachments extends BaseController {
       return $this->jsonResponse($response);
     }
 
-    if (!$this->checkBoardAccess($this->getBoardId($task->id), $request)) {
+    $boardId = $this->getBoardId($task->id);
+    if (!$this->checkBoardAccess($boardId, $request)) {
       return $this->jsonResponse($response, 403);
     }
 
@@ -98,6 +99,17 @@ class Attachments extends BaseController {
     $this->apiJson->setSuccess();
     $this->apiJson->addAlert('success', $this->strings->api_attachmentSucceed);
     $this->apiJson->addData($attachment);
+
+    // file attachment uploaded, check auto actions
+    $autoActions = R::find('autoaction', ' board_id = ? ', [ $boardId ]);
+    foreach ($autoActions as $action) {
+      switch ($action->trigger) {
+        case ActionTrigger::FILE_UPLOADED():
+          $output = $this->n8napi->httpPost($task, $boardId, $attachment->id));
+          $this->apiJson->addAlert('fileupload webhook result:',$output);
+          break;
+      }
+    }
 
     return $this->jsonResponse($response);
   }

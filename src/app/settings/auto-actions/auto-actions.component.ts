@@ -117,6 +117,14 @@ export class AutoActionsComponent implements OnDestroy {
 
     this.triggers = [
       [
+        ActionTrigger.TaskCreated,
+        this.strings.settings_triggerTaskCreated
+      ],
+      [
+        ActionTrigger.FileUploaded,
+        this.strings.settings_triggerFileUploaded
+      ],
+      [
         ActionTrigger.MovedToColumn,
         this.strings.settings_triggerMoveToColumn
       ],
@@ -131,13 +139,17 @@ export class AutoActionsComponent implements OnDestroy {
       [
         ActionTrigger.PointsChanged,
         this.strings.settings_triggerPointsChanged
-      ]
+      ]      
     ];
 
-    this.typesList = [
+    this.typesList = [      
       [
         ActionType.SetColor,
         this.strings.settings_actionSetColor
+      ],
+      [
+        ActionType.StartFlow,
+        this.strings.settings_actionStartFlow
       ],
       [
         ActionType.SetCategory,
@@ -203,6 +215,22 @@ export class AutoActionsComponent implements OnDestroy {
           this.strings.settings_alterByPoints
         ] ];
         break;
+
+      case ActionTrigger.TaskCreated:
+        // Leave triggerSources empty
+        this.types = [[
+          ActionType.StartFlow,
+          this.strings.settings_startn8nFlow
+        ]];
+        break;
+
+      case ActionTrigger.FileUploaded:
+        // Leave triggerSources empty
+        this.types = [[
+          ActionType.StartFlow,
+          this.strings.settings_startn8nFlow
+        ]];
+        break;
     }
 
     this.newAction.type = this.types ?
@@ -244,12 +272,15 @@ export class AutoActionsComponent implements OnDestroy {
 
     if (this.newAction.source_id === null) {
       this.isAddDisabled =
-        (this.newAction.trigger !== ActionTrigger.PointsChanged);
+        (this.newAction.trigger !== ActionTrigger.PointsChanged &&
+          this.newAction.trigger !== ActionTrigger.TaskCreated &&
+          this.newAction.trigger !== ActionTrigger.FileUploaded);
     }
 
     if (!this.isAddDisabled && this.newAction.change_to === null) {
       this.isAddDisabled =
-        (this.newAction.type !== ActionType.ClearDueDate);
+        (this.newAction.type !== ActionType.ClearDueDate &&
+          this.newAction.type !== ActionType.StartFlow);
     }
   }
 
@@ -293,6 +324,14 @@ export class AutoActionsComponent implements OnDestroy {
 
       case ActionTrigger.PointsChanged:
         desc = this.strings.settings_triggerPointsChanged;
+        break;
+
+      case ActionTrigger.TaskCreated:
+        desc = this.strings.settings_triggerTaskCreated;
+        break;
+
+      case ActionTrigger.FileUploaded:
+        desc = this.strings.settings_triggerFileUploaded;
         break;
     }
 
@@ -343,6 +382,10 @@ export class AutoActionsComponent implements OnDestroy {
 
       case ActionType.AlterColorByPoints:
         desc = this.strings.settings_actionAlterColor;
+        break;
+
+      case ActionType.StartFlow:
+        desc = this.strings.settings_actionStartFlow;
         break;
     }
 

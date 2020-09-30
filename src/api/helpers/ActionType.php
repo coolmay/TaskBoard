@@ -9,5 +9,6 @@ class ActionType extends Enum {
   const ADD_ASSIGNEE = 5;
   const CLEAR_DUE_DATE = 6;
   const ALTER_COLOR_BY_POINTS= 7;
+  const CALL_N8N_WebHook = 8;
 }
 
