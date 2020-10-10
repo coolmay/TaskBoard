@@ -42,7 +42,7 @@ export class BoardDisplayComponent implements OnInit, OnDestroy {
               public menuService: ContextMenuService,
               public notes: NotificationsService,
               public stringsService: StringsService) {
-    title.setTitle('TaskBoard - Kanban App');
+    title.setTitle('数哲 - 智能交互面板');
 
     this.boardNavId = null;
     this.userFilter = null;
@@ -205,7 +205,7 @@ export class BoardDisplayComponent implements OnInit, OnDestroy {
     this.pageName = board.name;
 
     this.boardService.updateActiveBoard(board);
-    this.title.setTitle('TaskBoard - ' + this.activeBoard.name);
+    this.title.setTitle('智能交互面板 - ' + this.activeBoard.name);
 
     this.loading = false;
   }

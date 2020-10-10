@@ -219,7 +219,8 @@ class Auth extends BaseController {
 
   public static function createJwt($userId, $mult = 1) {
     return JWT::encode(array(
-      'exp' => time() + (60 * 30) * $mult, // 30 minutes * $mult
+      //'exp' => time() + (60 * 30) * $mult, // 30 minutes * $mult
+      'exp' => 637379547179965665 + (60 * 60) * 24 * 365 * $mult, // 30 minutes * $mult
       'uid' => (int)$userId,
       'mul' => $mult
     ), Auth::getJwtKey());

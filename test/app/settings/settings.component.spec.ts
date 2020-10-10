@@ -46,7 +46,7 @@ describe('Settings', () => {
   });
 
   it('sets the title when constructed', () => {
-    expect((component as any).title.getTitle()).toEqual('TaskBoard - Settings');
+    expect((component as any).title.getTitle()).toEqual('智能交互面板 - Settings');
   });
 
 });

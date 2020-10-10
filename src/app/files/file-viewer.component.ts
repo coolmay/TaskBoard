@@ -37,7 +37,7 @@ export class FileViewerComponent implements OnInit, OnDestroy {
               private notes: NotificationsService,
               private auth: AuthService,
               private stringsService: StringsService) {
-    title.setTitle('TaskBoard - File Viewer');
+    title.setTitle('智能交互面板 - File Viewer');
     this.isLoaded = false;
     this.subs = [];
 
@@ -45,7 +45,7 @@ export class FileViewerComponent implements OnInit, OnDestroy {
       this.strings = newStrings;
 
       this.pageName = this.strings.files;
-      this.title.setTitle(`TaskBoard - ${this.pageName}`);
+      this.title.setTitle(`智能交互面板 - ${this.pageName}`);
     });
     this.subs.push(sub);
 
