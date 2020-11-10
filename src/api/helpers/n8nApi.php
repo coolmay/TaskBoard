@@ -4,7 +4,7 @@
 class N8NApi {
   public static function httpPost($task, $boardid, $attachmentid)
   {
-    $url = 'http://20.44.192.240:5678/webhook/taskboard';
+    $url = 'http://console.diginsides.com:5678/webhook/taskboard';
     $postData = array('taskid' => $task['id'],
                       'columnid' => $task['column_id'],
                       'boardid' => $boardid,
