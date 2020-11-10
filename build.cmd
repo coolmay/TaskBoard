@@ -1,1 +1,1 @@
-docker build %~dp0..\TaskBoard -t taskboard:private
+docker build %~dp0..\TaskBoard -t shiqiufang/tb-demo

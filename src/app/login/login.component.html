@@ -1,14 +1,14 @@
 <div class="login">
   <form #f="ngForm">
-    <h1>智能交互面板</h1>
-    <input type="text" placeholder="Username" title="Username"
+    <h1>数哲智能交互</h1>
+    <input type="text" placeholder="Username" title="用户名"
     [(ngModel)]="username" name="username" autofocus>
-    <input type="password" placeholder="Password" title="Password"
+    <input type="password" placeholder="Password" title="密码"
     [(ngModel)]="password" name="password">
     <label><input type="checkbox"
-      [(ngModel)]="remember" name="remember"> Remember Me</label>
+      [(ngModel)]="remember" name="remember">记住我</label>
     <button type="submit" [disabled]="isSubmitted"
-      (click)="login()" >Sign In</button>
+      (click)="login()" >登录</button>
   </form>
   <p>v{{ version }}</p>
 </div>

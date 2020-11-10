@@ -33,9 +33,10 @@
     <label>
       {{ strings['settings_displayLanguage'] }}:
       <select class="autosize"
-        *ngIf="userOptions"
-        [ngModel]="userOptions.language"
-        (ngModelChange)="onOptionChange('language', $event)">
+              *ngIf="userOptions"
+              [ngModel]="userOptions.language"
+              (ngModelChange)="onOptionChange('language', $event)">
+        <option value="cn">中文</option>
         <option value="en">English</option>
         <option value="es">Español</option>
         <option value="fr">Français</option>

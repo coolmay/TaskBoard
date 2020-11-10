@@ -19,7 +19,7 @@ export class SettingsComponent implements OnDestroy {
 
     const sub = stringsService.stringsChanged.subscribe(newStrings => {
       this.strings = newStrings;
-      title.setTitle('智能交互面板 - ' + this.strings['settings']); // tslint:disable-line
+      title.setTitle('数哲智能交互面板 - ' + this.strings['settings']); // tslint:disable-line
     });
     this.subs.push(sub);
   }

@@ -205,7 +205,7 @@ export class BoardDisplayComponent implements OnInit, OnDestroy {
     this.pageName = board.name;
 
     this.boardService.updateActiveBoard(board);
-    this.title.setTitle('智能交互面板 - ' + this.activeBoard.name);
+    this.title.setTitle('数哲智能交互面板 - ' + this.activeBoard.name);
 
     this.loading = false;
   }

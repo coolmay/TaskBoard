@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       stringsService.stringsChanged.subscribe(newStrings => {
         this.strings = newStrings;
 
-        title.setTitle('智能交互面板 - ' + this.strings.dashboard);
+        title.setTitle('数哲智能交互面板 - ' + this.strings.dashboard);
         this.pageName = this.strings.dashboard;
       })
     );
