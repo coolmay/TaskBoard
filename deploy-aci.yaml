@@ -1,0 +1,42 @@
+apiVersion: 2019-12-01
+location: southeastasia
+name: demo
+properties:
+  containers:
+  - name: tbdemo
+    properties:
+      image: shiqiufang/tb-demo:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      volumeMounts:
+      - mountPath: /tmp/share
+        name: filesharevolume
+      ports:
+      - port: 80
+  - name: n8ndemo
+    properties:
+      image: shiqiufang/n8n-demo
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 5678
+  osType: Linux
+  ipAddress:
+    type: Public
+    ports:
+    - protocol: tcp
+      port: 80
+    - protocol: tcp
+      port: 5678
+  volumes:
+  - name: filesharevolume
+    azureFile:
+      sharename: dbshare
+      storageAccountName: demoshares
+      storageAccountKey: u0KqpAXYwom5Q9sg4gAM/1ovh6rTW4ztlBmpwrILmX8lyB92Y5c1Yb5dp/RdqF2L4yrV3+KwDyIQvzNYeQjJsA==
+tags: {exampleTag: demo}
+type: Microsoft.ContainerInstance/containerGroups

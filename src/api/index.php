@@ -6,12 +6,12 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Response;
 
 use Selective\BasePath\BasePathDetector;
-
 use RedBeanPHP\R;
-
 require './vendor/autoload.php';
 
-R::setup('sqlite:taskboard.sqlite');
+//R::setup('sqlite:taskboard.sqlite');
+//try{$db = new PDO('mysql:host=40.78.233.2;dbname=taskboard','tbadmin@tbdemo','!!!!1234abcd');} catch(PDOException $e){throw $e->getmessage();}
+R::setup('mysql:host=tbdemo.mysql.database.azure.com;dbname=taskboard','tbadmin@tbdemo','!!!!1234abcd');
 
 $container = new DI\Container();
 AppFactory::setContainer($container);

@@ -2,8 +2,9 @@ version: "3"
 
 services:
   taskboard:
-    image: "taskboard"
+    image: "shiqiufang/tb-demo"
+    container_name: azure-taskboard
     build:
       context: .
     ports:
-      - "8081:80"
+      - "81:80"

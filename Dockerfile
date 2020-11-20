@@ -36,7 +36,8 @@ ENV PROJECT /var/www/html
 
 RUN apt-get update && apt-get install -y sqlite3 php7.3-sqlite
 RUN a2enmod rewrite expires
-# RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql
+
 
 # RUN pecl install xdebug && docker-php-ext-enable xdebug
 # COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
